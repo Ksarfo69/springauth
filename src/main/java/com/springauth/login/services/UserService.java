@@ -1,25 +1,35 @@
 package com.springauth.login.services;
 
 import com.springauth.login.dto.AppUser;
+import com.springauth.login.dto.AppUserRegistrationRequest;
+import com.springauth.login.dto.AppUserUpdateRequest;
 import com.springauth.login.dto.Role;
 import com.springauth.login.repositories.AppUserRepository;
 import com.springauth.login.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService  {
 
     @Autowired
     private AppUserRepository appUserRepository;
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    public AppUser saveAppUser(AppUser appUser)
+
+    public AppUser saveAppUser(AppUserRegistrationRequest appUserRegistrationRequest)
     {
+        AppUser appUser = AppUser.builder()
+                .username(appUserRegistrationRequest.username())
+                .password(passwordEncoder.encode(appUserRegistrationRequest.password()))
+                .build();
         return appUserRepository.save(appUser);
     }
 

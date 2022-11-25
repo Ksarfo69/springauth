@@ -1,4 +1,4 @@
-package com.springauth.login.services;
+package com.springauth.login.dto;
 
 import com.springauth.login.dto.Role;
 

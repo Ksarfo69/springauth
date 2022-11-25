@@ -2,7 +2,8 @@ package com.springauth.login.controllers;
 
 import com.springauth.login.dto.AppUser;
 import com.springauth.login.dto.Role;
-import com.springauth.login.services.AppUserUpdateRequest;
+import com.springauth.login.dto.AppUserRegistrationRequest;
+import com.springauth.login.dto.AppUserUpdateRequest;
 import com.springauth.login.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class Home {
+public class MainController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/appuser")
-    public AppUser saveAppUser(@RequestBody AppUser appUser)
+    public AppUser saveAppUser(@RequestBody AppUserRegistrationRequest appUserRegistrationRequest)
     {
-        return userService.saveAppUser(appUser);
+        return userService.saveAppUser(appUserRegistrationRequest);
     }
 
     @PostMapping("/role")
@@ -48,4 +49,9 @@ public class Home {
         return userService.addRoleToUser(appUserUpdateRequest);
     }
 
+    @GetMapping("/login")
+    public String login()
+    {
+        return "You have been authenticated";
+    }
 }
