@@ -6,7 +6,7 @@ spring:
     name: spring-security
   datasource:
     url: jdbc:postgresql://localhost:5433/postgres
-    username: postgres
+    username: tlc03
     password: password
   jpa:
     properties:

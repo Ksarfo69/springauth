@@ -6,6 +6,7 @@ import com.springauth.login.dto.AppUserRegistrationRequest;
 import com.springauth.login.dto.AppUserUpdateRequest;
 import com.springauth.login.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,7 +50,8 @@ public class MainController {
         return userService.addRoleToUser(appUserUpdateRequest);
     }
 
-    @GetMapping("/login")
+    @PreAuthorize("hasAuthority('SCOPE_ROLE_SUPER_ADMIN')")
+    @GetMapping("/secure")
     public String login()
     {
         return "You have been authenticated";

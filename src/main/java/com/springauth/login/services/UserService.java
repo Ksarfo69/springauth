@@ -60,15 +60,4 @@ public class UserService  {
         return appUserRepository.save(repAppUser);
     }
 
-//    public AppUser updateAppUser(String username, AppUserUpdateRequest appUserUpdateRequest)
-//    {
-//        AppUser repAppUser = appUserRepository.findByUsername(username);
-//
-//        if(Objects.nonNull(repAppUser.getRoles()))
-//        {
-//            repAppUser.setRoles(appUserUpdateRequest.roles());
-//        }
-//
-//        return appUserRepository.save(repAppUser);
-//    }
 }

@@ -1,4 +1,4 @@
-package com.springauth.login.config;
+package com.springauth.login.security;
 
 import com.springauth.login.dto.AppUser;
 import com.springauth.login.repositories.AppUserRepository;
